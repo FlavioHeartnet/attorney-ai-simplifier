@@ -18,7 +18,7 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', async () => {
+    it('should return an email body"', async () => {
       const [recipient, body] = [
         'lawer@lawer.com',
         'congrats your case has been won!',
