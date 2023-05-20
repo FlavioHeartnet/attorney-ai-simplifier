@@ -7,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('email')
-  buildemail(createDto: CreateEmailDto): string {
-    return this.appService.buildEmailservice(createDto);
+  async buildemail(createDto: CreateEmailDto): Promise<string> {
+    return await this.appService.buildEmailservice(createDto);
   }
 }
