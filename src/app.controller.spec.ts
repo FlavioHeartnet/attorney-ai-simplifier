@@ -42,7 +42,7 @@ describe('AppController', () => {
           recipient: recipient,
           subject: '',
         }),
-      ).toEqual(mockresposnsebody);
+      ).toStrictEqual(mockresposnsebody);
     });
   });
 });
