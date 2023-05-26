@@ -3,6 +3,7 @@ import { OpenAiRepository } from './infra/openai.api';
 import CreateEmailDto from './dto/create.email.dto';
 import { Email } from './@core/email.entity';
 import { config } from './config';
+import EmailProvider from './infra/emailProvider/nodemailer.provider';
 
 @Injectable()
 export class AppService {
@@ -22,6 +23,13 @@ export class AppService {
       sender: config.email,
       subject: 'Atualização no seu caso',
     });
+
+    const emailProvider = new EmailProvider({
+      subject: email.details.subject,
+      to: email.details.recipient,
+      from: email.details.sender,
+      text: email.details.body
+    }).sendMessage();
 
     return email.getFormattedEmail();
   }

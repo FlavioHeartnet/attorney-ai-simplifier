@@ -6,14 +6,16 @@ export interface IEmailDetails {
 }
 
 export class Email {
-  private details: IEmailDetails;
+  private _details: IEmailDetails;
 
   constructor(details: IEmailDetails) {
-    this.details = details;
+    this._details = details;
   }
-
+  get details() {
+    return this._details;
+  }
   getFormattedEmail(): string {
-    const { sender, recipient, subject, body } = this.details;
+    const { sender, recipient, subject, body } = this._details;
 
     return `
         From: ${sender}
