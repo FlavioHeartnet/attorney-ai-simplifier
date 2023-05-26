@@ -10,15 +10,15 @@ export class AppService {
   constructor(private readonly adapterAi: OpenAiRepository) {}
 
   async buildEmailservice(createDto: CreateEmailDto): Promise<string> {
-    const simpleMessage = await this.adapterAi.buildEmailSimplefied(
-      createDto.body,
-      createDto.recipientName,
-      createDto.senderName,
-      createDto.lawFirm,
-    );
+    // const simpleMessage = await this.adapterAi.buildEmailSimplefied(
+    //   createDto.body,
+    //   createDto.recipientName,
+    //   createDto.senderName,
+    //   createDto.lawFirm,
+    // );
 
     const email = new Email({
-      body: simpleMessage,
+      body: "ola tudo bem",
       recipient: createDto.recipient,
       sender: config.email,
       subject: 'Atualização no seu caso',
