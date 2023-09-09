@@ -10,4 +10,9 @@ export class AppController {
   async buildemail(@Body() createDto: CreateEmailDto): Promise<string> {
     return await this.appService.buildEmailservice(createDto);
   }
+
+  @Get('getSuitMoviments')
+  async getSuitMoviments(){
+    return await this.appService.getSuitMoviments('1');
+  }
 }

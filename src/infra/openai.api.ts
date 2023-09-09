@@ -20,7 +20,25 @@ export class OpenAiRepository {
     });
     this._openAiapi = new OpenAIApi(this._configuration);
   }
-
+  async buildJsonFromMovimentContent(content: string, movDate: string){
+      const request: CreateChatCompletionRequest = {
+        model: OpenAiRepository.MODEL,
+        messages: [
+          {
+            role: ChatCompletionRequestMessageRoleEnum.System,
+            content:
+              'You will respond with a json with the following attributes: data, Prazo_Ate, Tipo and if more attributes are needed add also data_evento, hora_evento',
+          },
+          {
+            role: ChatCompletionRequestMessageRoleEnum.User,
+            content: `reescreva em formato json de forma utilizavel em uma sistema as principais informações desta movimentação juridica feita na data de ${movDate} colocando o prazo a data de ate quando deve ser cumprido a movimentação: ${content}`
+          }
+        ]
+      }
+      const response = (await this._openAiapi.createChatCompletion(request)).data;
+      console.log(response.usage);
+      return response.choices[0].message.content;
+  }
   async buildEmailSimplefied(
     prompt: string,
     client: string,
