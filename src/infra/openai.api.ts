@@ -27,11 +27,11 @@ export class OpenAiRepository {
           {
             role: ChatCompletionRequestMessageRoleEnum.System,
             content:
-              'You will respond with a json with the following attributes: data, Prazo_Ate, Tipo and if more attributes are needed add also data_evento, hora_evento',
+              'You will respond with a json with the following attributes if its a "intimiação": data, prazo_ate, tipo and if this is a "notificação de audiencia" then show those: data_evento, hora_evento',
           },
           {
             role: ChatCompletionRequestMessageRoleEnum.User,
-            content: `reescreva em formato json de forma utilizavel em uma sistema as principais informações desta movimentação juridica feita na data de ${movDate} colocando o prazo a data de ate quando deve ser cumprido a movimentação: ${content}`
+            content: `reescreva em formato json de forma utilizavel em uma sistema as principais informações desta movimentação juridica feita na data de ${movDate} colocando o prazo a data de ate quando deve ser cumprido a movimentação se houver algum prazo: ${content}`
           }
         ]
       }

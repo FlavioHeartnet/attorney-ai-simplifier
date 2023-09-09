@@ -29,6 +29,6 @@ export class AppService {
 
   async getSuitMoviments(cnj: string){
 
-      return JSON.parse(await this.adapterAi.buildJsonFromMovimentContent(mov.items[2].conteudo, mov.items[2].data));
+      return await this.adapterAi.buildJsonFromMovimentContent(mov.items[4].conteudo, mov.items[4].data);
   }
 }
